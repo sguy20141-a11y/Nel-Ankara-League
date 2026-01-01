@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Nel Ankara FC - Home</title>
+
+<style>
+:root {
+    --crimson:#8B0000;
+    --red-glow:#ff1a1a;
+    --bg:#111;
+    --text:#ffffff;
+    --card-bg:rgba(255,255,255,0.04);
+}
+
+* {
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Poppins", sans-serif;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+}
+
+/* HEADER */
+header {
+    background: var(--crimson);
+    padding: 25px 20px;
+    text-align: center;
+    border-bottom: 3px solid var(--red-glow);
+    box-shadow: 0 0 20px var(--red-glow);
+}
+
+header h1 {
+    font-size: 38px;
+    font-weight: 800;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+/* NAVIGATION */
+nav {
+    margin-top: 12px;
+}
+
+nav a {
+    margin: 0 14px;
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    text-shadow: 0 0 10px var(--red-glow);
+}
+
+/* ========== IMAGE INSIDE GLOWING CONTAINER ========== */
+
+.image-card {
+    padding: 25px;
+    margin: 30px auto;
+    max-width: 400px;
+    border-radius: 12px;
+    background: var(--card-bg);
+    border: 2px solid var(--crimson);
+    backdrop-filter: blur(3px);
+    animation: glow 2s infinite alternate;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-card img {
+    width: 80%;
+    display: block;
+    filter: drop-shadow(0 0 10px #000);
+    border-radius: 6px;
+}
+
+/* CARD GLOW ANIMATION */
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 6px var(--red-glow), inset 0 0 6px var(--red-glow);
+    }
+    100% {
+        box-shadow: 0 0 20px var(--red-glow), inset 0 0 12px var(--red-glow);
+        border-color: var(--red-glow);
+    }
+}
+
+/* SECTION TITLES */
+h2 {
+    text-align: center;
+    font-size: 42px;
+    color: #ffb3b3;
+    margin-top: 40px;
+    margin-bottom: 25px;
+    text-shadow: 0 0 12px var(--red-glow);
+}
+
+/* NORMAL CARDS */
+.card {
+    padding: 25px;
+    margin: 25px auto;
+    max-width: 850px;
+    border-radius: 12px;
+    background: var(--card-bg);
+    border: 2px solid var(--crimson);
+    backdrop-filter: blur(3px);
+    animation: glow 2s infinite alternate;
+}
+
+.card h3 {
+    font-size: 26px;
+    margin-bottom: 10px;
+    text-shadow: 0 0 6px var(--red-glow);
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 18px;
+    margin-top: 40px;
+    background: var(--crimson);
+    font-weight: 600;
+    box-shadow: 0 0 15px var(--red-glow);
+}
+</style>
+
+</head>
+<body>
+
+<header>
+    <h1>NEL ANKARA FC</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="rules.html">Rules</a>
+    </nav>
+</header>
+
+<!-- IMAGE INSIDE A TRANSITION/GLOW CONTAINER -->
+<div class="image-card">
+    <img src="images_6_5.jpeg" alt="Crest Logo">
+</div>
+
+<section>
+    <h2>WELCOME TO NEL ANKARA FC</h2>
+
+    <div class="card">
+        <h3>League Announcements</h3>
+        <p>Season updates and fixtures will appear here.</p>
+    </div>
+
+    <div class="card">
+        <h3>Competitive Philosophy</h3>
+        <p>Blue Lock spirit — Ego, Rivalry, Flow, Glory.</p>
+    </div>
+</section>
+
+<footer>
+    © 2025 Nel Ankara FC League
+</footer>
+
+</body>
+</html>
