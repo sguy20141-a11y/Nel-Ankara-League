@@ -23,116 +23,178 @@ body {
     background: var(--bg);
     color: var(--text);
     line-height: 1.7;
+    overflow-x: hidden;
 }
 
 /* HEADER */
 header {
     background: var(--crimson);
-    padding: 25px 20px;
+    padding: 30px 20px;
     text-align: center;
     border-bottom: 3px solid var(--red-glow);
-    box-shadow: 0 0 20px var(--red-glow);
+    box-shadow: 0 0 25px var(--red-glow);
 }
 
 header h1 {
-    font-size: 38px;
+    font-size: 40px;
     font-weight: 800;
-    letter-spacing: 4px;
+    letter-spacing: 5px;
     text-transform: uppercase;
 }
 
 /* NAVIGATION */
 nav {
-    margin-top: 12px;
+    margin-top: 14px;
 }
 
 nav a {
-    margin: 0 14px;
+    margin: 0 16px;
     color: white;
     font-weight: 600;
     text-decoration: none;
     font-size: 16px;
+    position: relative;
     transition: 0.3s;
+}
+
+nav a::after {
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-6px;
+    width:0;
+    height:2px;
+    background:var(--red-glow);
+    transition:0.3s;
+}
+
+nav a:hover::after {
+    width:100%;
 }
 
 nav a:hover {
     text-shadow: 0 0 10px var(--red-glow);
 }
 
-/* ========== IMAGE INSIDE GLOWING CONTAINER ========== */
-
+/* IMAGE CARD (LOGO) */
 .image-card {
-    padding: 25px;
-    margin: 30px auto;
-    max-width: 400px;
-    border-radius: 12px;
+    padding: 30px;
+    margin: 40px auto;
+    max-width: 420px;
+    border-radius: 14px;
     background: var(--card-bg);
     border: 2px solid var(--crimson);
-    backdrop-filter: blur(3px);
+    backdrop-filter: blur(4px);
     animation: glow 2s infinite alternate;
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: transform 0.4s;
+}
+
+.image-card:hover {
+    transform: scale(1.05);
 }
 
 .image-card img {
     width: 80%;
     display: block;
-    filter: drop-shadow(0 0 10px #000);
-    border-radius: 6px;
+    filter: drop-shadow(0 0 12px #000);
+    border-radius: 8px;
 }
 
-/* CARD GLOW ANIMATION */
+/* GLOW ANIMATION */
 @keyframes glow {
     0% {
-        box-shadow: 0 0 6px var(--red-glow), inset 0 0 6px var(--red-glow);
+        box-shadow: 0 0 8px var(--red-glow), inset 0 0 8px var(--red-glow);
     }
     100% {
-        box-shadow: 0 0 20px var(--red-glow), inset 0 0 12px var(--red-glow);
+        box-shadow: 0 0 24px var(--red-glow), inset 0 0 14px var(--red-glow);
         border-color: var(--red-glow);
     }
 }
 
-/* SECTION TITLES */
+/* SECTION TITLE */
 h2 {
     text-align: center;
-    font-size: 42px;
+    font-size: 44px;
     color: #ffb3b3;
-    margin-top: 40px;
-    margin-bottom: 25px;
-    text-shadow: 0 0 12px var(--red-glow);
+    margin: 50px 0 30px;
+    text-shadow: 0 0 14px var(--red-glow);
+    animation: fadeIn 1s ease forwards;
 }
 
-/* NORMAL CARDS */
+/* INTERACTIVE CARDS */
 .card {
-    padding: 25px;
-    margin: 25px auto;
+    padding: 26px;
+    margin: 26px auto;
     max-width: 850px;
-    border-radius: 12px;
+    border-radius: 14px;
     background: var(--card-bg);
     border: 2px solid var(--crimson);
-    backdrop-filter: blur(3px);
-    animation: glow 2s infinite alternate;
+    backdrop-filter: blur(4px);
+    cursor: pointer;
+    transition: transform 0.4s, box-shadow 0.4s;
+    animation: fadeUp 1s ease forwards;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 0 20px var(--red-glow);
 }
 
 .card h3 {
-    font-size: 26px;
-    margin-bottom: 10px;
-    text-shadow: 0 0 6px var(--red-glow);
+    font-size: 28px;
+    margin-bottom: 12px;
+    text-shadow: 0 0 8px var(--red-glow);
+}
+
+.card p {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.5s ease, opacity 0.5s ease;
+}
+
+.card.active p {
+    max-height: 200px;
+    opacity: 1;
 }
 
 /* FOOTER */
 footer {
     text-align: center;
-    padding: 18px;
-    margin-top: 40px;
+    padding: 20px;
+    margin-top: 50px;
     background: var(--crimson);
     font-weight: 600;
-    box-shadow: 0 0 15px var(--red-glow);
+    box-shadow: 0 0 18px var(--red-glow);
+}
+
+/* ANIMATIONS */
+@keyframes fadeIn {
+    from {opacity:0; transform:translateY(-10px);}
+    to {opacity:1; transform:translateY(0);}
+}
+
+@keyframes fadeUp {
+    from {opacity:0; transform:translateY(20px);}
+    to {opacity:1; transform:translateY(0);}
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 30px;
+    }
+
+    h2 {
+        font-size: 32px;
+    }
 }
 </style>
-
 </head>
+
 <body>
 
 <header>
@@ -144,7 +206,7 @@ footer {
     </nav>
 </header>
 
-<!-- IMAGE INSIDE A TRANSITION/GLOW CONTAINER -->
+<!-- LOGO -->
 <div class="image-card">
     <img src="images_6_5.jpeg" alt="Crest Logo">
 </div>
@@ -154,18 +216,33 @@ footer {
 
     <div class="card">
         <h3>League Announcements</h3>
-        <p>Season updates and fixtures will appear here.</p>
+        <p>
+            Stay informed with official league updates, match schedules, rule changes,
+            and seasonal announcements. Every decision, every fixture — announced here first.
+        </p>
     </div>
 
     <div class="card">
         <h3>Competitive Philosophy</h3>
-        <p>Blue Lock spirit — Ego, Rivalry, Flow, Glory.</p>
+        <p>
+            Inspired by the Blue Lock mentality, Nel Ankara FC values ego, rivalry,
+            and relentless self-improvement. Only those who embrace pressure, flow,
+            and ambition will rise to the top.
+        </p>
     </div>
 </section>
 
 <footer>
     © 2025 Nel Ankara FC League
 </footer>
+
+<script>
+document.querySelectorAll(".card").forEach(card => {
+    card.addEventListener("click", () => {
+        card.classList.toggle("active");
+    });
+});
+</script>
 
 </body>
 </html>
