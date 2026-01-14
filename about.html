@@ -1,55 +1,164 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <title>Nel Ankara FC - About</title>
 <style>
-:root {--crimson:#8B0000;--red-glow:#ff1a1a;--bg:#111;--text:#fff;}
-*{margin:0;padding:0;box-sizing:border-box;font-family:"Poppins",sans-serif;}
-body{background:var(--bg);color:var(--text);}header{background:var(--crimson);padding:20px;text-align:center;
-border-bottom:3px solid var(--red-glow);box-shadow:0 0 15px var(--red-glow);}
-header h1{font-size:30px;font-weight:700;letter-spacing:3px;}
-nav{margin-top:10px;}nav a{margin:0 10px;color:white;font-weight:600;text-decoration:none;transition:0.3s;}
-nav a:hover{text-shadow:0 0 8px var(--red-glow);}
-.card{padding:20px;margin:20px auto;max-width:850px;border-radius:10px;background:rgba(255,0,0,0.08);
-border:2px solid var(--crimson);animation:glow 2s infinite alternate;}
-@keyframes glow{0%{box-shadow:0 0 5px var(--red-glow), inset 0 0 5px var(--red-glow);}
-100%{box-shadow:0 0 20px var(--red-glow), inset 0 0 12px var(--red-glow);border-color:var(--red-glow);}}
-h2{text-align:center;font-size:40px;color:#ffb3b3;text-shadow:0 0 10px var(--red-glow);margin-top:30px;margin-bottom:20px;}
-footer{text-align:center;padding:15px;margin-top:30px;background:var(--crimson);box-shadow:0 0 15px var(--red-glow);}
+:root {
+  --crimson:#8B0000;
+  --red-glow:#ff1a1a;
+  --bg:#111;
+  --text:#fff;
+}
+* {
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:"Poppins", sans-serif;
+}
+body {
+  background:var(--bg);
+  color:var(--text);
+}
+header {
+  background:var(--crimson);
+  padding:20px;
+  text-align:center;
+  border-bottom:3px solid var(--red-glow);
+  box-shadow:0 0 15px var(--red-glow);
+}
+header h1 {
+  font-size:30px;
+  font-weight:700;
+  letter-spacing:3px;
+}
+nav {
+  margin-top:10px;
+}
+nav a {
+  margin:0 10px;
+  color:white;
+  font-weight:600;
+  text-decoration:none;
+  transition:0.3s;
+}
+nav a:hover {
+  text-shadow:0 0 8px var(--red-glow);
+}
+.card {
+  padding:20px;
+  margin:20px auto;
+  max-width:850px;
+  border-radius:10px;
+  background:rgba(255,0,0,0.08);
+  border:2px solid var(--crimson);
+  animation:glow 2s infinite alternate;
+  cursor: pointer;
+  user-select: none;
+}
+.card h3 {
+  font-size: 20px;
+  color: #ffd6d6;
+  margin-bottom: 0;
+}
+.card-content {
+  color: #ffd6d6;
+  font-size: 16px;
+  line-height: 1.5;
+  margin-top: 12px;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
+}
+.card.open .card-content {
+  max-height: 500px; /* large enough for content */
+  opacity: 1;
+  overflow: visible;
+}
+.card.no-toggle {
+  cursor: default;
+}
+.card.no-toggle .card-content {
+  max-height: none;
+  opacity: 1;
+  overflow: visible;
+}
+@keyframes glow {
+  0% {
+    box-shadow:0 0 5px var(--red-glow), inset 0 0 5px var(--red-glow);
+  }
+  100% {
+    box-shadow:0 0 20px var(--red-glow), inset 0 0 12px var(--red-glow);
+    border-color:var(--red-glow);
+  }
+}
+h2 {
+  text-align:center;
+  font-size:40px;
+  color:#ffb3b3;
+  text-shadow:0 0 10px var(--red-glow);
+  margin-top:30px;
+  margin-bottom:20px;
+}
+footer {
+  text-align:center;
+  padding:15px;
+  margin-top:30px;
+  background:var(--crimson);
+  box-shadow:0 0 15px var(--red-glow);
+  font-weight:700;
+}
 </style>
 </head>
 <body>
 
 <header>
-    <h1>NEL ANKARA FC</h1>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="rules.html">Rules</a>
-    </nav>
+  <h1>NEL ANKARA FC</h1>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="rules.html">Rules</a>
+  </nav>
 </header>
 
 <section>
-    <h2>ABOUT US</h2>
+  <h2>ABOUT US</h2>
 
-    <div class="card">
-        <p>Nel Ankara FC is a competitive Blue Lock inspired football league built on ego and excellence.</p>
+  <div class="card no-toggle">
+    <div class="card-content">
+      <p>Nel Ankara FC is a fierce, Blue Lock-inspired competitive football league built on passion, ego, and the relentless pursuit of excellence. We’re not just playing; we’re conquering.</p>
     </div>
+  </div>
 
-    <div class="card">
-        <h3>Identity</h3>
-        <p>Crimson, ruthless, evolving. “Conquer Through Competition.”</p>
+  <div class="card">
+    <h3>Identity</h3>
+    <div class="card-content">
+      <p>Crimson red runs through our veins—bold, ruthless, and ever-evolving. Our mantra? “Conquer Through Competition.”</p>
     </div>
+  </div>
 
-    <div class="card">
-        <h3>What We Play</h3>
-        <p>Structured 5v5 league matches with tactical refinement.</p>
+  <div class="card">
+    <h3>What We Play</h3>
+    <div class="card-content">
+      <p>Intense 5v5 league battles where strategy meets skill, testing every player’s limits on the virtual pitch.</p>
     </div>
+  </div>
 </section>
 
 <footer>
-    © 2025 Nel Ankara FC League
+  © 2025 Nel Ankara FC League
 </footer>
+
+<script>
+// Make cards with toggles open/close on header click
+document.querySelectorAll('.card').forEach(card => {
+  if(!card.classList.contains('no-toggle')) {
+    card.querySelector('h3').addEventListener('click', () => {
+      card.classList.toggle('open');
+    });
+  }
+});
+</script>
 
 </body>
 </html>
