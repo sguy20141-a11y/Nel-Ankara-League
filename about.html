@@ -1,115 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Nel Ankara FC - About</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEL Ankara FC - About</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+
 <style>
-:root {
-  --crimson:#8B0000;
-  --red-glow:#ff1a1a;
-  --bg:#111;
-  --text:#fff;
+:root{
+  --red:#ff1a1a;
+  --bg:#0b0b0f;
+  --card:#14141b;
+  --text:#ffffff;
 }
-* {
+
+*{
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family:"Poppins", sans-serif;
 }
-body {
-  background:var(--bg);
+
+body{
+  font-family:"Poppins",sans-serif;
+  background:radial-gradient(circle at top,#1a0000,#000);
   color:var(--text);
+  overflow-x:hidden;
 }
-header {
-  background:var(--crimson);
-  padding:20px;
-  text-align:center;
-  border-bottom:3px solid var(--red-glow);
-  box-shadow:0 0 15px var(--red-glow);
+
+/* NAVBAR */
+header{
+  position:fixed;
+  width:100%;
+  top:0;
+  background:rgba(0,0,0,0.6);
+  backdrop-filter:blur(10px);
+  padding:18px 8%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  z-index:1000;
 }
-header h1 {
-  font-size:30px;
-  font-weight:700;
+
+header h1{
+  font-size:20px;
+  font-weight:800;
   letter-spacing:3px;
 }
-nav {
-  margin-top:10px;
-}
-nav a {
-  margin:0 10px;
-  color:white;
-  font-weight:600;
+
+nav a{
+  margin-left:25px;
   text-decoration:none;
+  color:white;
   transition:0.3s;
 }
-nav a:hover {
-  text-shadow:0 0 8px var(--red-glow);
+
+nav a:hover{
+  color:var(--red);
 }
-.card {
-  padding:20px;
-  margin:20px auto;
-  max-width:850px;
-  border-radius:10px;
-  background:rgba(255,0,0,0.08);
-  border:2px solid var(--crimson);
-  animation:glow 2s infinite alternate;
-  cursor: pointer;
-  user-select: none;
-}
-.card h3 {
-  font-size: 20px;
-  color: #ffd6d6;
-  margin-bottom: 0;
-}
-.card-content {
-  color: #ffd6d6;
-  font-size: 16px;
-  line-height: 1.5;
-  margin-top: 12px;
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
-  transition: max-height 0.4s ease, opacity 0.3s ease;
-}
-.card.open .card-content {
-  max-height: 500px; /* large enough for content */
-  opacity: 1;
-  overflow: visible;
-}
-.card.no-toggle {
-  cursor: default;
-}
-.card.no-toggle .card-content {
-  max-height: none;
-  opacity: 1;
-  overflow: visible;
-}
-@keyframes glow {
-  0% {
-    box-shadow:0 0 5px var(--red-glow), inset 0 0 5px var(--red-glow);
-  }
-  100% {
-    box-shadow:0 0 20px var(--red-glow), inset 0 0 12px var(--red-glow);
-    border-color:var(--red-glow);
-  }
-}
-h2 {
+
+/* HERO TITLE */
+.hero{
+  padding-top:130px;
+  padding-bottom:60px;
   text-align:center;
-  font-size:40px;
-  color:#ffb3b3;
-  text-shadow:0 0 10px var(--red-glow);
-  margin-top:30px;
-  margin-bottom:20px;
 }
-footer {
+
+.hero h2{
+  font-size:48px;
+  font-weight:800;
+  letter-spacing:4px;
+  opacity:0;
+  transform:translateY(40px);
+  transition:1s ease;
+}
+
+.hero h2.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* SECTION */
+.section{
+  padding:60px 8% 120px;
+  max-width:1000px;
+  margin:auto;
+}
+
+/* CARDS */
+.card{
+  background:var(--card);
+  padding:30px;
+  border-radius:12px;
+  margin-bottom:30px;
+  border:1px solid #222;
+  transition:0.4s;
+  transform:translateY(40px);
+  opacity:0;
+}
+
+.card.show{
+  transform:translateY(0);
+  opacity:1;
+}
+
+.card:hover{
+  border-color:var(--red);
+  box-shadow:0 0 20px rgba(255,0,0,0.4);
+}
+
+.card h3{
+  font-size:20px;
+  color:var(--red);
+  cursor:pointer;
+}
+
+.card-content{
+  margin-top:15px;
+  line-height:1.6;
+  max-height:0;
+  overflow:hidden;
+  opacity:0;
+  transition:all 0.4s ease;
+}
+
+.card.open .card-content{
+  max-height:500px;
+  opacity:1;
+}
+
+.card.no-toggle .card-content{
+  max-height:none;
+  opacity:1;
+}
+
+/* FOOTER */
+footer{
   text-align:center;
-  padding:15px;
-  margin-top:30px;
-  background:var(--crimson);
-  box-shadow:0 0 15px var(--red-glow);
-  font-weight:700;
+  padding:30px;
+  background:#000;
+  border-top:1px solid #222;
+  opacity:0.7;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .hero h2{
+    font-size:32px;
+  }
 }
 </style>
 </head>
+
 <body>
 
 <header>
@@ -121,42 +163,70 @@ footer {
   </nav>
 </header>
 
-<section>
-  <h2>ABOUT US</h2>
+<section class="hero">
+  <h2 id="aboutTitle">ABOUT NEL ANKARA FC</h2>
+</section>
+
+<section class="section">
 
   <div class="card no-toggle">
     <div class="card-content">
-      <p>Nel Ankara FC is a fierce, Blue Lock-inspired competitive football league built on passion, ego, and the relentless pursuit of excellence. We’re not just playing; we’re conquering.</p>
+      <p>
+        Nel Ankara FC is a fierce, Blue Lock-inspired competitive football league built on passion, ego, and the relentless pursuit of excellence. We’re not just playing; we’re conquering.
+      </p>
     </div>
   </div>
 
   <div class="card">
     <h3>Identity</h3>
     <div class="card-content">
-      <p>Crimson red runs through our veins—bold, ruthless, and ever-evolving. Our mantra? “Conquer Through Competition.”</p>
+      <p>
+        Crimson red runs through our veins—bold, ruthless, and ever-evolving. Our mantra? “Conquer Through Competition.”
+      </p>
     </div>
   </div>
 
   <div class="card">
     <h3>What We Play</h3>
     <div class="card-content">
-      <p>Intense 5v5 league battles where strategy meets skill, testing every player’s limits on the virtual pitch.</p>
+      <p>
+        Intense 5v5 league battles where strategy meets skill, testing every player’s limits on the virtual pitch.
+      </p>
     </div>
   </div>
+
 </section>
 
 <footer>
-  © 2025 Nel Ankara FC League
+  © 2026 Nel Ankara FC League
 </footer>
 
 <script>
-// Make cards with toggles open/close on header click
-document.querySelectorAll('.card').forEach(card => {
-  if(!card.classList.contains('no-toggle')) {
-    card.querySelector('h3').addEventListener('click', () => {
+/* HERO TITLE LOAD */
+window.addEventListener("load",()=>{
+  document.getElementById("aboutTitle").classList.add("show");
+});
+
+/* CARD TOGGLE */
+document.querySelectorAll('.card').forEach(card=>{
+  if(!card.classList.contains('no-toggle')){
+    card.querySelector('h3').addEventListener('click',()=>{
       card.classList.toggle('open');
     });
   }
+});
+
+/* SCROLL REVEAL */
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add("show");
+    }
+  });
+},{threshold:0.2});
+
+document.querySelectorAll('.card').forEach(card=>{
+  observer.observe(card);
 });
 </script>
 
