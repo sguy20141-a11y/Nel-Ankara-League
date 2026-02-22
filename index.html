@@ -1,195 +1,184 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Nel Ankara FC - Home</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEL Ankara FC - Home</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
 
 <style>
-:root {
-    --crimson:#8B0000;
-    --red-glow:#ff1a1a;
-    --bg:#111;
+:root{
+    --red:#ff1a1a;
+    --bg:#0b0b0f;
+    --card:#14141b;
     --text:#ffffff;
-    --card-bg:rgba(255,255,255,0.04);
 }
 
-* {
+/* RESET */
+*{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:"Poppins", sans-serif;
 }
 
-body {
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.7;
-    overflow-x: hidden;
+body{
+    font-family:"Poppins",sans-serif;
+    background:radial-gradient(circle at top,#1a0000,#000);
+    color:var(--text);
+    overflow-x:hidden;
 }
 
-/* HEADER */
-header {
-    background: var(--crimson);
-    padding: 30px 20px;
-    text-align: center;
-    border-bottom: 3px solid var(--red-glow);
-    box-shadow: 0 0 25px var(--red-glow);
+/* NAVBAR */
+header{
+    position:fixed;
+    width:100%;
+    top:0;
+    background:rgba(0,0,0,0.6);
+    backdrop-filter:blur(10px);
+    padding:18px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    z-index:1000;
 }
 
-header h1 {
-    font-size: 40px;
-    font-weight: 800;
-    letter-spacing: 5px;
-    text-transform: uppercase;
+header h1{
+    font-size:20px;
+    font-weight:800;
+    letter-spacing:3px;
 }
 
-/* NAVIGATION */
-nav {
-    margin-top: 14px;
-}
-
-nav a {
-    margin: 0 16px;
-    color: white;
-    font-weight: 600;
-    text-decoration: none;
-    font-size: 16px;
-    position: relative;
-    transition: 0.3s;
-}
-
-nav a::after {
-    content:"";
-    position:absolute;
-    left:0;
-    bottom:-6px;
-    width:0;
-    height:2px;
-    background:var(--red-glow);
+nav a{
+    margin-left:25px;
+    text-decoration:none;
+    color:white;
     transition:0.3s;
 }
 
-nav a:hover::after {
-    width:100%;
+nav a:hover{
+    color:var(--red);
 }
 
-nav a:hover {
-    text-shadow: 0 0 10px var(--red-glow);
+/* HERO */
+.hero{
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding-top:80px;
 }
 
-/* IMAGE CARD (LOGO) */
-.image-card {
-    padding: 30px;
-    margin: 40px auto;
-    max-width: 420px;
-    border-radius: 14px;
-    background: var(--card-bg);
-    border: 2px solid var(--crimson);
-    backdrop-filter: blur(4px);
-    animation: glow 2s infinite alternate;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: transform 0.4s;
+/* LOGO ANIMATION */
+.hero img{
+    width:220px;
+    margin-bottom:25px;
+    opacity:0;
+    transform:scale(0.8);
+    transition:1s ease;
 }
 
-.image-card:hover {
-    transform: scale(1.05);
+.hero img.show{
+    opacity:1;
+    transform:scale(1);
 }
 
-.image-card img {
-    width: 80%;
-    display: block;
-    filter: drop-shadow(0 0 12px #000);
-    border-radius: 8px;
+/* TITLE ANIMATION */
+.hero h2{
+    font-size:50px;
+    font-weight:800;
+    letter-spacing:4px;
+    margin-bottom:15px;
+    opacity:0;
+    transform:translateY(40px);
+    transition:1s ease;
 }
 
-/* GLOW ANIMATION */
-@keyframes glow {
-    0% {
-        box-shadow: 0 0 8px var(--red-glow), inset 0 0 8px var(--red-glow);
-    }
-    100% {
-        box-shadow: 0 0 24px var(--red-glow), inset 0 0 14px var(--red-glow);
-        border-color: var(--red-glow);
-    }
+.hero h2.show{
+    opacity:1;
+    transform:translateY(0);
 }
 
-/* SECTION TITLE */
-h2 {
-    text-align: center;
-    font-size: 44px;
-    color: #ffb3b3;
-    margin: 50px 0 30px;
-    text-shadow: 0 0 14px var(--red-glow);
-    animation: fadeIn 1s ease forwards;
+.hero p{
+    max-width:600px;
+    opacity:0;
+    transform:translateY(40px);
+    transition:1.2s ease;
 }
 
-/* INTERACTIVE CARDS */
-.card {
-    padding: 26px;
-    margin: 26px auto;
-    max-width: 850px;
-    border-radius: 14px;
-    background: var(--card-bg);
-    border: 2px solid var(--crimson);
-    backdrop-filter: blur(4px);
-    cursor: pointer;
-    transition: transform 0.4s, box-shadow 0.4s;
-    animation: fadeUp 1s ease forwards;
+.hero p.show{
+    opacity:0.85;
+    transform:translateY(0);
 }
 
-.card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 0 20px var(--red-glow);
+/* SECTION */
+.section{
+    padding:120px 8%;
+    background:linear-gradient(to bottom,#000,#111);
 }
 
-.card h3 {
-    font-size: 28px;
-    margin-bottom: 12px;
-    text-shadow: 0 0 8px var(--red-glow);
+.section-title{
+    text-align:center;
+    font-size:36px;
+    margin-bottom:60px;
+    opacity:0;
+    transform:translateY(40px);
+    transition:1s ease;
 }
 
-.card p {
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    transition: max-height 0.5s ease, opacity 0.5s ease;
+.section-title.show{
+    opacity:1;
+    transform:translateY(0);
 }
 
-.card.active p {
-    max-height: 200px;
-    opacity: 1;
+/* GRID */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+}
+
+/* CARDS */
+.card{
+    background:var(--card);
+    padding:30px;
+    border-radius:12px;
+    border:1px solid #222;
+    transform:translateY(40px);
+    opacity:0;
+    transition:0.8s ease;
+}
+
+.card.show{
+    transform:translateY(0);
+    opacity:1;
+}
+
+.card:hover{
+    border-color:var(--red);
+    box-shadow:0 0 20px rgba(255,0,0,0.4);
+}
+
+.card h3{
+    margin-bottom:15px;
+    color:var(--red);
 }
 
 /* FOOTER */
-footer {
-    text-align: center;
-    padding: 20px;
-    margin-top: 50px;
-    background: var(--crimson);
-    font-weight: 600;
-    box-shadow: 0 0 18px var(--red-glow);
-}
-
-/* ANIMATIONS */
-@keyframes fadeIn {
-    from {opacity:0; transform:translateY(-10px);}
-    to {opacity:1; transform:translateY(0);}
-}
-
-@keyframes fadeUp {
-    from {opacity:0; transform:translateY(20px);}
-    to {opacity:1; transform:translateY(0);}
+footer{
+    text-align:center;
+    padding:30px;
+    background:#000;
+    border-top:1px solid #222;
+    opacity:0.7;
 }
 
 /* RESPONSIVE */
-@media (max-width: 600px) {
-    header h1 {
-        font-size: 30px;
-    }
-
-    h2 {
-        font-size: 32px;
+@media(max-width:768px){
+    .hero h2{
+        font-size:32px;
     }
 }
 </style>
@@ -206,41 +195,59 @@ footer {
     </nav>
 </header>
 
-<!-- LOGO -->
-<div class="image-card">
-    <img src="images_6_5.jpeg" alt="Crest Logo">
-</div>
+<section class="hero">
+    <img src="image janmon.png" alt="NEL Crest" id="logo">
+    <h2 id="mainTitle">WELCOME TO NEL ANKARA FC</h2>
+    <p id="heroText">
+        The elite competitive league inspired by ego, rivalry, and relentless growth.
+    </p>
+</section>
 
-<section>
-    <h2>WELCOME TO NEL ANKARA FC</h2>
+<section class="section">
+    <h2 class="section-title">League Overview</h2>
 
-    <div class="card">
-        <h3>League Announcements</h3>
-        <p>
-            Stay informed with official league updates, match schedules, rule changes,
-            and seasonal announcements. Every decision, every fixture — announced here first.
-        </p>
-    </div>
+    <div class="grid">
+        <div class="card">
+            <h3>League Announcements</h3>
+            <p>
+                Stay informed with official league updates, match schedules,
+                rule changes, and seasonal announcements.
+            </p>
+        </div>
 
-    <div class="card">
-        <h3>Competitive Philosophy</h3>
-        <p>
-            Inspired by the Blue Lock mentality, Nel Ankara FC values ego, rivalry,
-            and relentless self-improvement. Only those who embrace pressure, flow,
-            and ambition will rise to the top.
-        </p>
+        <div class="card">
+            <h3>Competitive Philosophy</h3>
+            <p>
+                Inspired by the Blue Lock mentality, Nel Ankara FC values ego,
+                rivalry, and relentless self-improvement.
+            </p>
+        </div>
     </div>
 </section>
 
 <footer>
-    © 2025 Nel Ankara FC League
+    © 2026 Nel Ankara FC League
 </footer>
 
 <script>
-document.querySelectorAll(".card").forEach(card => {
-    card.addEventListener("click", () => {
-        card.classList.toggle("active");
+/* HERO LOAD ANIMATION */
+window.addEventListener("load",()=>{
+    document.getElementById("logo").classList.add("show");
+    setTimeout(()=>document.getElementById("mainTitle").classList.add("show"),300);
+    setTimeout(()=>document.getElementById("heroText").classList.add("show"),600);
+});
+
+/* SCROLL REVEAL */
+const observer = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add("show");
+        }
     });
+},{threshold:0.2});
+
+document.querySelectorAll(".section-title, .card").forEach(el=>{
+    observer.observe(el);
 });
 </script>
 
