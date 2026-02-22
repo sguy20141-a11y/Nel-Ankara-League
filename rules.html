@@ -1,130 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Nel Ankara FC - Rules</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEL Ankara FC - Rules</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
 
 <style>
 :root{
-  --crimson:#8B0000;
-  --red-glow:#ff1a1a;
-  --bg:#111;
-  --text:#fff;
-  --muted:#d9bdbd;
-  --card-bg:rgba(255,255,255,0.04);
+  --red:#ff1a1a;
+  --bg:#0b0b0f;
+  --card:#14141b;
+  --text:#ffffff;
 }
-*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif}
-body{background:var(--bg);color:var(--text);line-height:1.6}
 
-/* HEADER */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:"Poppins",sans-serif;
+  background:radial-gradient(circle at top,#1a0000,#000);
+  color:var(--text);
+  overflow-x:hidden;
+}
+
 header{
-  background:var(--crimson);
-  padding:22px;
-  text-align:center;
-  border-bottom:3px solid var(--red-glow);
-  box-shadow:0 0 20px var(--red-glow)
-}
-header h1{font-size:32px;font-weight:800;letter-spacing:3px}
-nav{margin-top:10px}
-nav a{
-  margin:0 14px;
-  color:white;
-  font-weight:600;
-  text-decoration:none;
-  position:relative
-}
-nav a::after{
-  content:"";
-  position:absolute;
-  left:0;
-  bottom:-6px;
-  width:0;
-  height:2px;
-  background:var(--red-glow);
-  transition:.3s
-}
-nav a:hover::after{width:100%}
-
-/* LAYOUT */
-.container{
-  max-width:1200px;
-  margin:40px auto;
-  padding:0 18px
-}
-.page-title{
-  text-align:center;
-  font-size:42px;
-  color:#ffb3b3;
-  text-shadow:0 0 14px var(--red-glow);
-  margin-bottom:30px
-}
-
-/* CARDS */
-.card{
-  background:var(--card-bg);
-  border:2px solid var(--crimson);
-  border-radius:14px;
-  padding:20px;
-  margin-bottom:20px;
-  animation:glow 2s infinite alternate;
-  cursor:pointer
-}
-.card h3{
-  font-size:22px;
-  color:#ffd6d6;
+  position:fixed;
+  width:100%;
+  top:0;
+  background:rgba(0,0,0,0.6);
+  backdrop-filter:blur(10px);
+  padding:18px 8%;
   display:flex;
   justify-content:space-between;
-  align-items:center
+  align-items:center;
+  z-index:1000;
 }
-.card span{opacity:.7}
+
+header h1{
+  font-size:20px;
+  font-weight:800;
+  letter-spacing:3px;
+}
+
+nav a{
+  margin-left:25px;
+  text-decoration:none;
+  color:white;
+  transition:0.3s;
+}
+
+nav a:hover{
+  color:var(--red);
+}
+
+.hero{
+  padding-top:130px;
+  padding-bottom:60px;
+  text-align:center;
+}
+
+.hero h2{
+  font-size:48px;
+  font-weight:800;
+  letter-spacing:4px;
+  opacity:0;
+  transform:translateY(40px);
+  transition:1s ease;
+}
+
+.hero h2.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.section{
+  padding:60px 8% 120px;
+  max-width:1000px;
+  margin:auto;
+}
+
+.card{
+  background:var(--card);
+  padding:30px;
+  border-radius:12px;
+  margin-bottom:30px;
+  border:1px solid #222;
+  transition:0.4s;
+  transform:translateY(40px);
+  opacity:0;
+}
+
+.card.show{
+  transform:translateY(0);
+  opacity:1;
+}
+
+.card:hover{
+  border-color:var(--red);
+  box-shadow:0 0 20px rgba(255,0,0,0.4);
+}
+
+.card h3{
+  font-size:20px;
+  color:var(--red);
+  cursor:pointer;
+}
+
 .card-content{
+  margin-top:15px;
+  line-height:1.8;
   max-height:0;
   overflow:hidden;
   opacity:0;
-  transition:max-height .6s ease, opacity .6s ease
+  transition:all 0.4s ease;
 }
-.card.active .card-content{
-  max-height:6000px;
+
+.card.open .card-content{
+  max-height:5000px;
   opacity:1;
-  margin-top:14px
 }
 
-p,li{font-size:14px;color:var(--muted)}
-ul{margin-left:18px;margin-top:8px}
-
-.small{font-size:13px;color:#f0cfcf}
-.note{
-  background:rgba(255,255,255,0.03);
-  padding:12px;
-  border-radius:8px;
-  margin-top:14px;
-  color:#ffdede
+.card.no-toggle .card-content{
+  max-height:none;
+  opacity:1;
 }
 
-.section-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:16px
-}
-
-/* FOOTER */
 footer{
   text-align:center;
-  padding:18px;
-  margin-top:40px;
-  background:var(--crimson);
-  box-shadow:0 0 16px var(--red-glow);
-  font-weight:700
+  padding:30px;
+  background:#000;
+  border-top:1px solid #222;
+  opacity:0.7;
 }
 
-@keyframes glow{
-  0%{box-shadow:0 0 8px var(--red-glow),inset 0 0 8px rgba(255,26,26,.05)}
-  100%{box-shadow:0 0 24px var(--red-glow),inset 0 0 14px rgba(255,26,26,.08);border-color:var(--red-glow)}
-}
-@media(max-width:600px){
-  .page-title{font-size:30px}
-  header h1{font-size:26px}
+@media(max-width:768px){
+  .hero h2{
+    font-size:32px;
+  }
 }
 </style>
 </head>
@@ -140,233 +157,170 @@ footer{
   </nav>
 </header>
 
-<div class="container">
-<div class="page-title">LEAGUE RULEBOOK — BLR INDIA COMP RULEBOOK</div>
+<section class="hero">
+  <h2 id="rulesTitle">LEAGUE RULEBOOK</h2>
+</section>
 
-<!-- OVERVIEW -->
-<div class="card">
-<h3>Rulebook Overview & Council <span>+</span></h3>
+<section class="section">
+
+<div class="card no-toggle">
 <div class="card-content">
-<p class="small"><strong>NOTE:</strong> Only the Council may edit rules. Any rule announced without director confirmation does not apply. Rules apply to pickups, scrims and leagues.</p>
-<p class="small"><strong>RULES COUNCIL:</strong> Alex • Ppninja • Haru • Elite</p>
+All official competitive regulations of Nel Ankara FC. Failure to comply may result in Free Goals, Round Redo, Match Void, Ban, or Forfeit.
 </div>
 </div>
 
-<!-- MATCH INFO -->
-<div class="card">
-<h3>Match Info — Basic Format <span>+</span></h3>
-<div class="card-content">
-<ul>
-<li>Matches: <strong>5v5</strong>.</li>
-<li>20 minutes to field 5 players or auto-forfeit.</li>
-<li>Pickups: <strong>BO3</strong>.</li>
-<li>Scrims / League: <strong>FT3</strong>, sides swap every leg.</li>
-<li>Indian servers (GMT) only.</li>
-<li>Players must be signed to teams.</li>
-<li>Spectators removable on captain request.</li>
-</ul>
-</div>
-</div>
+<div class="card"><h3>Match Format & Server Rules</h3><div class="card-content">
+5v5 Main Game Mode.<br>
+Each team must have 5 players within 20 minutes or auto forfeit.<br><br>
 
-<!-- PC CHECK -->
-<div class="card">
-<h3>PC Check Policy <span>+</span></h3>
-<div class="card-content">
-<p class="small">If cheating, exploiting, alt usage or multi-teaming is suspected, the player must PC check within <strong>24 hours</strong>.</p>
-</div>
-</div>
+Pickups: BO3.<br>
+Scrim/League: FT3.<br>
+Sides swapped each leg.<br><br>
 
-<!-- SPORTSMANSHIP -->
-<div class="card">
-<h3>Sportsmanship & Evidence <span>+</span></h3>
-<div class="card-content">
-<ul>
-<li>Toxicity allowed only as light trash talk.</li>
-<li>Discrimination, racism, homophobia forbidden.</li>
-<li>Pickups require at least one referee.</li>
-<li>No-ref matches waive complaints unless clip evidence exists.</li>
-</ul>
-</div>
-</div>
+All matches must be played on Indian Servers (GMT).
+</div></div>
 
-<!-- ILLEGAL ACTIONS -->
-<div class="card">
-<h3>Illegal Actions (FULL LIST) <span>+</span></h3>
-<div class="card-content">
-<ul>
-<li>Duplicate styles (GK exception).</li>
-<li>Mid-leg style/flow swaps.</li>
-<li>Identical avatars.</li>
-<li>Hidden flows or cosmetics.</li>
-<li>Bug abuse / lag switching / holding X.</li>
-<li>Invisible box steals.</li>
-<li>Shot-hiding awakenings.</li>
-<li>Time wasting / stall dribbling.</li>
-<li>Resetting during play.</li>
-<li>Illegal flags.</li>
-<li>TP-shot abuse.</li>
-</ul>
-</div>
-</div>
+<div class="card"><h3>Player Eligibility & Evidence</h3><div class="card-content">
+Players must be signed to participate in scrims.<br>
+Spectators removable unless Substitute / Referee / Streamer.<br><br>
+Pickups require at least 1 referee unless both captains agree otherwise. No complaints without clips.
+</div></div>
 
-<!-- SERVER & GOALS -->
-<div class="card">
-<h3>Servers, Goals & Server Swap Rules <span>+</span></h3>
-<div class="card-content">
-<ul>
-<li>Kickoff bug own-goals = Free Goal.</li>
-<li>Illegal goals give opponent +1.</li>
-<li>Server swap rules after 2 and 4 legs apply.</li>
-</ul>
-</div>
-</div>
+<div class="card"><h3>Sportsmanship & Conduct</h3><div class="card-content">
+Toxic behaviour results in warning → punishment → force disband.<br>
+Discrimination of any kind not allowed.<br>
+Only dual accounting CF & GK allowed.<br>
+Selling intentionally = 1-day ban.
+</div></div>
 
-<!-- SUBS -->
-<div class="card">
-<h3>Substitution & Disconnect Rules <span>+</span></h3>
-<div class="card-content">
-<ul>
-<li>No subs mid-leg.</li>
-<li>Max 5 minutes to sub.</li>
-<li>Disconnect rules for 4v5, 3v5, 4v4 fully apply.</li>
-<li>GK disconnect must be replaced instantly.</li>
-<li>Server owner DC rules apply.</li>
-</ul>
-</div>
-</div>
+<div class="card"><h3>Game Illegal Actions</h3><div class="card-content">
+Duplicate styles (GK must go styleless) → Pause + Free Goal.<br>
+Swapping styles mid-leg → Free Goal.<br>
+Avatar similarity → Pause + Change.<br>
+Bug abuse / lag switch / holding X → Free Goal.<br>
+Invisible box entry → Free Goal.<br>
+Awakening hide shot (Aiku/Karasu/Reo/Gagamaru) → Free Goal.<br>
+Time wasting 15–20 sec → Penalized.<br>
+Reset during attack → Free Goal.<br>
+Illegal flags → Match void.<br>
+TP shot with ability → Not allowed.<br>
+1 wall inner box max, 2 defenders max.<br>
+No god keybinds during FG.
+</div></div>
 
-<!-- PAIRING -->
-<div class="card">
-<h3>Pairing Styles & Flow Rules <span>+</span></h3>
-<div class="card-content">
-<ul>
-<li>Igaguri / Don / Aiku banned together.</li>
-<li>Sae & Reaper restrictions apply.</li>
-<li>Blood Moon Rin + NEL Rin banned.</li>
-<li>Skeleton Nagi + Nagi banned.</li>
-<li>Only two defensive styles allowed.</li>
-</ul>
-</div>
-</div>
+<div class="card"><h3>Substitution & Disconnect Rules</h3><div class="card-content">
+No subs mid-leg.<br>
+5 minutes max to sub.<br>
+Disconnect → play until goal then pause.<br>
+3v5 → 1 temp sub allowed.<br>
+GK disconnect → must rejoin immediately.<br>
+Frequent disconnects → permanent sub.<br>
+PS owner disconnect → redo leg with same score & time.
+</div></div>
 
-<!-- GK RULES -->
-<div class="card">
-<h3>Goalkeeper Rules <span>+</span></h3>
-<div class="card-content">
-<ul>
-<li>No steal/deflect as GK.</li>
-<li>No auto-track passes.</li>
-<li>Karasu & Don perm banned GK.</li>
-<li>Duped GK must play styleless.</li>
-</ul>
-</div>
-</div>
+<div class="card"><h3>Pairing & Team Composition</h3><div class="card-content">
+Igaguri/Don/Aiku cannot be paired.<br>
+Sae/Reaper Sae + Charles banned.<br>
+Blood Moon Rin + NEL Rin banned.<br>
+Only 2 defensive styles per team.<br>
+Scythe Slam / Off Balance / Lunar Axis not usable in opponent half.
+</div></div>
 
-<!-- STYLE RULES FULL -->
-<div class="card">
-<h3>STYLE RULES — FULL LIST <span>+</span></h3>
-<div class="card-content">
+<div class="card"><h3>Goalkeeper Rules</h3><div class="card-content">
+No steal/deflect as GK.<br>
+No auto-track passes.<br>
+Perm banned GK styles: Karasu, Don Lorenzo.<br>
+Off-ball moves banned in box.<br>
+Autogoal moves banned.
+</div></div>
 
-<div class="section-grid">
+<div class="card"><h3>Complete Style & Character Rules</h3><div class="card-content">
+Generational/World/Masterclass = World Class category.<br>
+Slide cancel banned with specific dribbles.<br>
+Banned styles: Kurona, Lavinho, Loki, Bunny, Kaiser, Nel Nagi, Nel Isagi, Subzero Loki, Gingerbread Charles, Elf Kaiser.<br><br>
 
-<div><h3>REO</h3><ul>
-<li>REO GK banned.</li>
-<li>Power-shot flow in box banned.</li>
-<li>Double V dribble banned.</li>
-<li>Copy restrictions apply.</li>
-</ul></div>
+CHIGIRI – Accelerate TP banned, GK dive banned, Speed+Flow banned.<br>
+IGAGURI – Malicia anywhere except opponent GK.<br>
+HIORI – Domain banned, Laser TP banned.<br>
+KARASU – No steal in opp box.<br>
+GAGAMARU – Dupe allowed.<br>
+NAGI – Walking trap to goal banned, M1 TP banned.<br>
+REO – GK banned, Power shot flow banned inbox, multiple copy restrictions.<br>
+YUKIMIYA – Laboba banned in GK box.<br>
+KING – Chop Feast banned, Lion Chop Feint banned in GK box.<br>
+KUNIGAMI – Body block restrictions depending on Aiku/Sae.<br>
+SAE – Perfect passing to box banned, Creative dribble inside box banned.<br>
+NEL RIN – Curve shot banned in box, Destroyer+Flow banned.<br>
+CHARLES – Auto goal banned, Sky Arch pass banned in box.<br>
+BACHIRA – Heel pass rule, Iframe shot banned in box.<br>
+AIKU – Forced defense limited, clearance 3 max.<br>
+DON LORENZO – Golden defense only in own half.<br><br>
 
-<div><h3>NAGI</h3><ul>
-<li>Trap TP banned.</li>
-<li>M1 TP shot banned.</li>
-</ul></div>
+LIMITED STYLES:<br>
+Reaper Sae – Scythe Pass banned in box.<br>
+Demon Shidou – Demon header banned in goal box.<br>
+Blood Moon Rin – Blood dribble & Crescent shot banned in box.<br>
+Phantom Isagi – Direct shot & illusion banned in box.<br>
+Skeleton Nagi – Skull Roulette banned in box.<br>
+Krampus King – Shot banned inbox.<br>
+All chemical reactions banned.
+</div></div>
 
-<div><h3>GAGAMARU</h3><ul>
-<li>Dupe allowed.</li>
-<li>GK allowed.</li>
-</ul></div>
+<div class="card"><h3>Flow Rules</h3><div class="card-content">
+Emperor/Demon King cannot be duped.<br>
+Duped OP flow → Round Redo.<br>
+Destructive Impulses shot banned inbox.<br>
+Butterfly Dancer banned.<br>
+Godspeed banned.<br>
+Target Man shot banned inbox.
+</div></div>
 
-<div><h3>AIKU</h3><ul>
-<li>Forced defense limits.</li>
-<li>Shot hiding banned.</li>
-</ul></div>
+<div class="card"><h3>Blacklist Triggers & FFlags</h3><div class="card-content">
+Alting multiple teams.<br>
+Repeated harassment.<br>
+Continuous rule breaking.<br>
+Exploiting/cheating.<br>
+Pitch invading → ban.<br>
+PS abuse → host ban + FG.<br>
+Refusing PC check → punishment.<br><br>
 
-<div><h3>KARASU</h3><ul>
-<li>GK banned.</li>
-<li>Steal banned in box.</li>
-</ul></div>
+FFLAGS BANNED:<br>
+debounce<br>
+hbe<br>
+decomp<br>
+anti-headers<br>
+Any unfair unknown flag.
+</div></div>
 
-<div><h3>SAE / REAPER SAE</h3><ul>
-<li>Off-Balance restrictions.</li>
-<li>Box pass bans.</li>
-</ul></div>
-
-<div><h3>BLOOD MOON / NEL RIN</h3><ul>
-<li>Combo banned.</li>
-<li>Box activation banned.</li>
-</ul></div>
-
-<div><h3>SKELETON NAGI</h3><ul>
-<li>Cannot pair with Nagi.</li>
-</ul></div>
-
-<div><h3>BACHIRA</h3><ul>
-<li>No self heel-pass abuse.</li>
-</ul></div>
-
-<div><h3>KUNIGAMI</h3><ul>
-<li>Body block restrictions.</li>
-</ul></div>
-
-<div><h3>CHARLES</h3><ul>
-<li>Auto-goal banned.</li>
-</ul></div>
-
-<div><h3>KING</h3><ul>
-<li>Chop abuse banned.</li>
-</ul></div>
-
-<div><h3>YUKIMIYA</h3><ul>
-<li>Slide cancel abuse banned.</li>
-</ul></div>
-
-<div><h3>OTHER BANNED STYLES</h3><ul>
-<li>Kurona, Lavinho, Loki, Bunny, Kaiser, Nel Nagi, Nel Isagi.</li>
-</ul></div>
-
-</div>
-
-<div class="note small">
-Slide cancelling with movement-altering dribbles is banned. Shot cancels allowed except where stated.
-</div>
-
-</div>
-</div>
-
-<!-- OP FLOW -->
-<div class="card">
-<h3>OP FLOW RULES <span>+</span></h3>
-<div class="card-content">
-<ul>
-<li>Flow abuse banned.</li>
-<li>No flow cancel in GK box.</li>
-</ul>
-</div>
-</div>
-
-</div>
+</section>
 
 <footer>
-NEL ANKARA FC © 2026 — All Rights Reserved
+© 2026 Nel Ankara FC League
 </footer>
 
 <script>
-document.querySelectorAll(".card").forEach(card=>{
-  card.addEventListener("click",()=>{
-    card.classList.toggle("active");
-    const s=card.querySelector("span");
-    if(s)s.textContent=card.classList.contains("active")?"−":"+";
+window.addEventListener("load",()=>{
+  document.getElementById("rulesTitle").classList.add("show");
+});
+
+document.querySelectorAll('.card').forEach(card=>{
+  if(!card.classList.contains('no-toggle')){
+    card.querySelector('h3').addEventListener('click',()=>{
+      card.classList.toggle('open');
+    });
+  }
+});
+
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add("show");
+    }
   });
+},{threshold:0.2});
+
+document.querySelectorAll('.card').forEach(card=>{
+  observer.observe(card);
 });
 </script>
 
